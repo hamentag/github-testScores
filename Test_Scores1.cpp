@@ -13,6 +13,10 @@ using namespace std;
 
 // Function prototypes
 void getData(int*, int);
+void displayUnsortedData(int*, int);
+void sortData(int*, int);
+void displaySortedData(int*, int);
+
 
 int main()
 {
@@ -36,6 +40,15 @@ int main()
 
     // Get the test scores
     getData(scores, numScores);
+
+    // Display the unsorted test scores 
+    displayUnsortedData(scores, numScores);
+
+    // Sort the test scores in ascending order
+    sortData(scores, numScores);
+
+    // Display the sorted test scores 
+    displaySortedData(scores, numScores);
     
 
     // Free dynamically allocated memory
@@ -64,5 +77,52 @@ void getData(int* arr, int size)
                 << "Test " << (count + 1) << ": ";
             cin >> *(arr + count);
         }
+    }
+}
+//*********************************************************************************
+// The displayUnsortedData function displays the test scores as given by the user *
+//*********************************************************************************
+void displayUnsortedData(int* arr, int size)
+{
+    cout << "\n------------- Unsorted List -------------" << endl;
+    for (int count = 0; count < size; count++)
+    {
+        cout << "Test " << (count + 1) << ": "
+            << *(arr + count) << endl;
+    }
+}
+//*****************************************************************
+// The SortData function sorts the test scores in ascending order *
+//*****************************************************************
+void sortData(int* arr, int size)
+{
+    int minIndex, minValue;
+
+    for (int start = 0; start < (size - 1); start++)
+    {
+        minIndex = start;
+        minValue = *(arr + start);
+        for (int index = start + 1; index < size; index++)
+        {
+            if (*(arr + index) < minValue)
+            {
+                minValue = *(arr + index);
+                minIndex = index;
+            }
+        }
+        *(arr + minIndex) = *(arr + start);
+        *(arr + start) = minValue;
+    }
+}
+//*****************************************************************
+// The displaySortedData function displays the sorted test scores *
+//*****************************************************************
+void displaySortedData(int* arr, int size)
+{
+    cout << "\n---- Sorted List in ascending order ----" << endl;
+    for (int count = 0; count < size; count++)
+    {
+        cout << "Test " << (count + 1) << ": "
+            << *(arr + count) << endl;
     }
 }
