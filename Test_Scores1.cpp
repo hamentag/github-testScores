@@ -16,7 +16,7 @@ void getData(int*, int);
 void displayUnsortedData(int*, int);
 void sortData(int*, int);
 void displaySortedData(int*, int);
-
+void calculateAverage(int*, int);
 
 int main()
 {
@@ -49,8 +49,10 @@ int main()
 
     // Display the sorted test scores 
     displaySortedData(scores, numScores);
-    
 
+    // Calculate the average 
+    calculateAverage(scores, numScores);
+    
     // Free dynamically allocated memory
     delete[] scores;
     scores = nullptr;
@@ -125,4 +127,23 @@ void displaySortedData(int* arr, int size)
         cout << "Test " << (count + 1) << ": "
             << *(arr + count) << endl;
     }
+}
+//***************************************************************************
+// The calculateAverage function calculates and displays the average scores *
+//***************************************************************************
+void calculateAverage(int* array, int size)
+{
+    double average,			 // To hold average scores
+        total = 0.0;         // Accumulator
+    // Calculate the total 
+    for (int count = 0; count < size; count++)
+        total += *(array + count);
+
+    // Calculate the average 
+    average = total / size;
+
+    // Display the average
+    cout << fixed << showpoint << setprecision(2);
+    cout << "----------------------------------------\n"
+        << "Average Test Scores: " << average << endl;
 }
