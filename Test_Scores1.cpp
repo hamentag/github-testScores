@@ -3,9 +3,10 @@
 // Programmer: Hamza Amentag
 // Date Turned in: September 5, 2023
 // Program Function: This program will sort, display and calculates
-// the average of test scores given by the user
+// the average and the grade of test scores given by the user
 // Inputs:  Number of scores N; Values of test scores.
-// Outputs: Unsorted test scores; Sorted test scores; Average.
+// Outputs: Unsorted test scores; Sorted test scores; Average, and 
+// grade.
 //******************************************************************
 #include <iostream>
 #include <iomanip>
@@ -17,6 +18,7 @@ void displayUnsortedData(int*, int);
 void sortData(int*, int);
 void displaySortedData(int*, int);
 void calculateAverage(int*, int);
+char determineGrade(int*);
 
 int main()
 {
@@ -90,9 +92,23 @@ void displayUnsortedData(int* arr, int size)
     for (int count = 0; count < size; count++)
     {
         cout << "Test " << (count + 1) << ": "
-            << *(arr + count) << endl;
+            << *(arr + count) << "\tGrade: "
+            << determineGrade(arr + count) << endl;
     }
 }
+//*****************************************************************
+// The determineGrade function determines the equivalent grade to *
+// each test score
+//*****************************************************************
+char determineGrade(int* score)
+{
+    if(*score >= 90) return 'A';
+    else if(*score >= 80) return 'B';
+    else if(*score >= 70) return 'C';
+    else if(*score >= 60) return 'D';
+    else return 'F';
+}
+
 //*****************************************************************
 // The SortData function sorts the test scores in ascending order *
 //*****************************************************************
@@ -125,7 +141,8 @@ void displaySortedData(int* arr, int size)
     for (int count = 0; count < size; count++)
     {
         cout << "Test " << (count + 1) << ": "
-            << *(arr + count) << endl;
+            << *(arr + count) << "\tGrade: "
+            << determineGrade(arr + count) << endl;
     }
 }
 //***************************************************************************
