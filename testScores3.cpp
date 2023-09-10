@@ -33,6 +33,9 @@ int main()
     // Display the unsorted list Names/scores 
     displayUnsortedData(names, scores, NUM_SCORES);
 
+    // Sort the list names/scores in ascending order
+    sortData(names, scores, NUM_SCORES);
+
     
 
     // Free dynamically allocated memory
@@ -67,5 +70,30 @@ void displayUnsortedData(string* arrName, int* arrScr, int size)
         cout << "Student " << (count + 1) << ":\t"
             << left << setw(8) << *(arrName + count) << "\t"
             << *(arrScr + count) << endl;
+    }
+}
+//*****************************************************************************
+// The SortData function sorts the list names//test scores in ascending order *
+//*****************************************************************************
+void sortData(string* arrName, int* arrScr, int size)
+{
+    int minIndex, minValue; string minValName;
+
+    for (int start = 0; start < (size - 1); start++)
+    {
+        minIndex = start;
+        minValue = *(arrScr + start);
+        minValName = *(arrName + start);
+        for (int index = start + 1; index < size; index++)
+        {
+            if (*(arrScr + index) < minValue)
+            {
+                minValue = *(arrScr + index);   minValName = *(arrName + index);
+                minIndex = index;
+            }
+        }
+        //swap      
+        *(arrScr + minIndex) = *(arrScr + start);   *(arrName + minIndex) = *(arrName + start);
+        *(arrScr + start) = minValue;               *(arrName + start) = minValName;
     }
 }
