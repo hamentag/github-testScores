@@ -30,6 +30,9 @@ int main()
      // Get the students' name-score pairs 
     getData(names, scores, NUM_SCORES);
 
+    // Display the unsorted list Names/scores 
+    displayUnsortedData(names, scores, NUM_SCORES);
+
     
 
     // Free dynamically allocated memory
@@ -52,4 +55,17 @@ void getData(string* arrName, int* arrScr, int size)
         inputFile >> *(arrScr + count);
     }
     inputFile.close();
+}
+//***************************************************************************
+// The displayUnsortedData function displays the data as read from the file *
+//***************************************************************************
+void displayUnsortedData(string* arrName, int* arrScr, int size)
+{
+    cout << "\n------------- Unsorted List -------------" << endl;
+    for (int count = 0; count < size; count++)
+    {
+        cout << "Student " << (count + 1) << ":\t"
+            << left << setw(8) << *(arrName + count) << "\t"
+            << *(arrScr + count) << endl;
+    }
 }
