@@ -5,6 +5,7 @@
 // Program Function: 
 //******************************************************************
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <iomanip>
 using namespace std;
@@ -26,6 +27,9 @@ int main()
     names = new string[NUM_SCORES];
     scores = new int[NUM_SCORES];
 
+     // Get the students' name-score pairs 
+    getData(names, scores, NUM_SCORES);
+
     
 
     // Free dynamically allocated memory
@@ -33,4 +37,19 @@ int main()
     scores = nullptr;
 
     return 0;
+}
+//***************************************************************************
+// The getData function gets the names and test scores values from the user *
+//***************************************************************************
+void getData(string* arrName, int* arrScr, int size)
+{
+    ifstream inputFile;
+    inputFile.open("StudentData.txt");
+    cout << "Reading Data from the file...";
+    for (int count = 0; count < size; count++)
+    {
+        inputFile >> *(arrName + count);
+        inputFile >> *(arrScr + count);
+    }
+    inputFile.close();
 }
