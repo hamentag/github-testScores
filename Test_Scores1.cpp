@@ -1,6 +1,6 @@
 //******************************************************************
 // Program Name: Test_Scores1.cpp
-// Programmer: Hamza Amentag
+// Programmer: Team {Hamza Amentag , Soumya Zariouh}
 // Date Turned in: September 5, 2023
 // Program Function: This program will sort, display and calculates
 // the average and the grade of test scores given by the user
@@ -102,11 +102,11 @@ void displayUnsortedData(int* arr, int size)
 //*****************************************************************
 char determineGrade(int* score)
 {
-    if(*score >= 90) return 'A';
-    else if(*score >= 80) return 'B';
-    else if(*score >= 70) return 'C';
-    else if(*score >= 60) return 'D';
-    else return 'F';
+    if(*score < 60) return 'F';
+    else if(*score < 70) return 'D';
+    else if(*score < 80) return 'C';
+    else if(*score < 90) return 'B';
+    else return 'A';
 }
 
 //*****************************************************************
